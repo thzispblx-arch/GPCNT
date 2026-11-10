@@ -1,0 +1,32 @@
+GRUPO CONECT — RELATÓRIO DE CORREÇÕES
+Data: 10/11/2026
+
+1. NAVEGAÇÃO DO MENU
+- O clique dos atalhos passou a ser tratado por um único listener delegado. Isso mantém os botões atuais funcionando e também contempla atalhos inseridos dinamicamente pelos módulos já existentes.
+- A troca de tela agora valida o destino antes de ocultar a tela atual. Um destino inválido não deixa mais o aplicativo em branco.
+- A navegação usa rolagem instantânea no celular para evitar animações concorrentes e sensação de travamento.
+
+2. CARREGAMENTO E DESEMPENHO
+- As fontes externas deixaram de ser importadas de forma bloqueante pelo CSS. O CSS e o JavaScript locais podem carregar sem esperar a resposta do Google Fonts; as fontes entram quando estiverem disponíveis, com fontes alternativas enquanto isso.
+- Os arquivos CSS e JavaScript receberam identificadores de versão na URL para evitar que o navegador continue usando cópias antigas em cache.
+- Atualizações visuais secundárias pausam quando a aba está em segundo plano e não fazem consultas ao estado da frota quando não há contadores correspondentes na tela. Os relógios e processos centrais da operação foram mantidos.
+
+3. ALERTA DA AGENDA NO CELULAR
+- O alerta de manutenção deixou de ficar preso sobre o topo da página, liberando a área de navegação.
+- O texto de prévia foi compactado para telas pequenas.
+- A prévia agrupa entradas visualmente idênticas para não repetir o mesmo aviso várias vezes. Os registros originais não são apagados nem alterados; continuam disponíveis na Agenda de Frota.
+
+4. PRESERVAÇÃO DOS SISTEMAS
+- Nenhum módulo, tela, formulário, botão funcional, chave de armazenamento ou sistema de dados foi removido intencionalmente.
+- O pacote original já continha 38 telas e 36 atalhos no menu principal. Todos os 36 destinos foram encontrados e testados após a correção.
+- Os sistemas de operação, frota, garagem, mecânica, agenda, financeiro, backup/restauração, Jovem Aprendiz e demais módulos foram mantidos nos arquivos recebidos.
+
+5. VALIDAÇÃO EXECUTADA
+- Sintaxe do JavaScript: aprovada com `node --check`.
+- Estrutura: 38 telas e 36 atalhos do menu identificados; todos os destinos existem.
+- Teste de navegação: 36 de 36 atalhos abriram a tela correspondente; o retorno ao menu principal também funcionou.
+- Teste visual em viewport móvel de 412 × 915: os cartões do menu permaneceram visíveis e o alerta ficou compacto.
+- Teste da prévia: registros visualmente duplicados deixaram de se repetir no aviso, sem apagar os itens da agenda.
+
+OBSERVAÇÃO DE PUBLICAÇÃO
+Este pacote contém os quatro arquivos originais atualizados (index.html, style.css, script.js e README.md), além deste relatório. Substitua os arquivos correspondentes no projeto publicado, mantendo os nomes e a mesma estrutura. Depois, feche e reabra o site ou faça uma atualização forçada para carregar as versões novas. A publicação no domínio/servidor não foi executada por este pacote.
